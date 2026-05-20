@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A&E NYC Plumbing — #1 Licensed Plumber in Manhattan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#faf6f0;
+  --cream2:#f2ece1;
+  --ink:#111008;
+  --gold:#c9a84c;
+  --gold2:#e8c96a;
+  --forest:#1a2e1e;
+  --forest2:#243d28;
+  --muted:#7a7060;
+  --border:rgba(17,16,8,0.1);
+  --ff-display:'Playfair Display',serif;
+  --ff-body:'Outfit',sans-serif;
+  --ff-mono:'Space Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-body);background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.75rem 5rem;transition:all 0.3s}
+nav.scrolled{background:rgba(250,246,240,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1.25rem 5rem}
+.nav-logo{display:flex;flex-direction:column;line-height:1}
+.nav-logo-main{font-family:var(--ff-display);font-size:1.4rem;font-weight:900;color:var(--ink);letter-spacing:0.02em}
+.nav-logo-sub{font-family:var(--ff-mono);font-size:0.6rem;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase}
+.nav-links{display:flex;gap:2.5rem;align-items:center;list-style:none}
+.nav-links a{font-size:0.82rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;color:var(--muted);transition:color 0.2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--forest);color:var(--cream)!important;padding:0.65rem 1.5rem;font-family:var(--ff-mono);font-size:0.72rem!important;letter-spacing:0.1em!important;transition:background 0.2s!important}
+.nav-cta:hover{background:var(--forest2)!important}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--forest);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:0 5rem 7rem}
+.hero-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--ff-display);font-size:clamp(12rem,22vw,26rem);font-weight:900;color:rgba(255,255,255,0.03);white-space:nowrap;pointer-events:none;letter-spacing:-0.02em;line-height:1}
+.hero-tag{position:absolute;top:9rem;left:5rem;font-family:var(--ff-mono);font-size:0.7rem;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;display:flex;align-items:center;gap:1rem}
+.hero-tag::after{content:'';width:60px;height:1px;background:var(--gold)}
+.hero-badge{position:absolute;top:8.5rem;right:5rem;border:1px solid rgba(255,255,255,0.15);padding:1.25rem 1.5rem;text-align:center}
+.hero-badge-num{font-family:var(--ff-display);font-size:2.5rem;font-weight:900;color:white;line-height:1}
+.hero-badge-num span{color:var(--gold)}
+.hero-badge-label{font-family:var(--ff-mono);font-size:0.62rem;color:rgba(255,255,255,0.35);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.4rem}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.hero-eyebrow{font-family:var(--ff-mono);font-size:0.72rem;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero-title{font-family:var(--ff-display);font-size:clamp(4rem,8vw,9rem);font-weight:900;color:white;line-height:0.95;letter-spacing:-0.01em;margin-bottom:2rem}
+.hero-title em{color:var(--gold);font-style:italic;display:block}
+.hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;width:100%}
+.hero-desc{font-size:1rem;color:rgba(255,255,255,0.4);max-width:400px;line-height:1.8;font-weight:300}
+.hero-actions{display:flex;flex-direction:column;gap:0.75rem;align-items:flex-end}
+.btn-gold{display:inline-flex;align-items:center;gap:0.75rem;background:var(--gold);color:var(--ink);font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:1rem 2rem;text-decoration:none;font-family:var(--ff-mono);transition:all 0.2s;white-space:nowrap}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-outline-white{display:inline-flex;align-items:center;gap:0.75rem;color:rgba(255,255,255,0.5);font-size:0.78rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:color 0.2s;font-family:var(--ff-mono);white-space:nowrap}
+.btn-outline-white:hover{color:white}
+.hero-line{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold) 0%,transparent 100%)}
+
+/* STATS BAR */
+.stats-bar{background:var(--cream2);display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+.stat-item{padding:2.5rem 3rem;border-right:1px solid var(--border);position:relative}
+.stat-item:last-child{border-right:none}
+.stat-item::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--gold);transition:height 0.4s ease}
+.stat-item:hover::before{height:100%}
+.stat-n{font-family:var(--ff-display);font-size:3rem;font-weight:900;color:var(--ink);line-height:1}
+.stat-n span{color:var(--gold)}
+.stat-l{font-family:var(--ff-mono);font-size:0.65rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.5rem}
+
+/* SECTION */
+section{padding:8rem 5rem}
+.label{font-family:var(--ff-mono);font-size:0.68rem;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem}
+.label::before{content:'';width:20px;height:1px;background:var(--gold)}
+.section-title{font-family:var(--ff-display);font-size:clamp(2.8rem,4.5vw,5rem);font-weight:900;line-height:0.95;color:var(--ink);letter-spacing:-0.01em}
+
+/* SERVICES */
+.services{background:var(--cream);padding:8rem 5rem}
+.svc-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:5rem}
+.svc-intro{font-size:1rem;color:var(--muted);line-height:1.8;font-weight:300;max-width:380px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.svc-card{background:var(--cream);padding:3rem 2.5rem;position:relative;overflow:hidden;transition:background 0.35s}
+.svc-card:hover{background:var(--forest)}
+.svc-n{font-family:var(--ff-mono);font-size:0.65rem;color:rgba(201,168,76,0.4);margin-bottom:2rem;transition:color 0.3s}
+.svc-card:hover .svc-n{color:rgba(201,168,76,0.5)}
+.svc-title{font-family:var(--ff-display);font-size:1.6rem;font-weight:700;color:var(--ink);margin-bottom:1rem;line-height:1.1;transition:color 0.3s}
+.svc-card:hover .svc-title{color:white}
+.svc-desc{font-size:0.88rem;color:var(--muted);line-height:1.7;font-weight:300;transition:color 0.3s}
+.svc-card:hover .svc-desc{color:rgba(255,255,255,0.45)}
+.svc-dot{width:8px;height:8px;background:var(--gold);border-radius:50%;position:absolute;bottom:2.5rem;right:2.5rem;transition:transform 0.3s}
+.svc-card:hover .svc-dot{transform:scale(2)}
+
+/* ABOUT */
+.about{background:var(--cream2);padding:8rem 5rem}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center}
+.about-right{}
+.about-quote{font-family:var(--ff-display);font-size:1.6rem;font-weight:700;font-style:italic;color:var(--ink);line-height:1.4;margin-bottom:2rem;padding-left:2rem;border-left:3px solid var(--gold)}
+.about-text{font-size:0.95rem;color:var(--muted);line-height:1.9;font-weight:300;margin-bottom:2rem}
+.about-perks{display:flex;flex-direction:column;gap:0}
+.perk{display:flex;align-items:center;gap:1rem;padding:1.1rem 0;border-top:1px solid var(--border);font-size:0.88rem;font-weight:500}
+.perk:last-child{border-bottom:1px solid var(--border)}
+.perk::before{content:'◆';color:var(--gold);font-size:0.5rem;flex-shrink:0}
+.about-left{position:relative}
+.about-card{background:var(--forest);padding:3rem;color:white;margin-bottom:2px}
+.about-card-title{font-family:var(--ff-display);font-size:2.5rem;font-weight:900;color:white;line-height:1;margin-bottom:0.5rem}
+.about-card-sub{font-family:var(--ff-mono);font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.15em;text-transform:uppercase}
+.about-card-badge{display:inline-block;background:rgba(201,168,76,0.2);color:var(--gold);font-family:var(--ff-mono);font-size:0.68rem;letter-spacing:0.1em;padding:0.35rem 0.85rem;margin-top:1.25rem}
+.about-phone{background:var(--gold);padding:2.5rem 3rem}
+.about-phone-label{font-family:var(--ff-mono);font-size:0.65rem;color:rgba(17,16,8,0.5);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.75rem}
+.about-phone-num{font-family:var(--ff-display);font-size:2.8rem;font-weight:900;color:var(--ink);text-decoration:none;display:block;line-height:1;transition:opacity 0.2s}
+.about-phone-num:hover{opacity:0.7}
+.about-phone-sub{font-size:0.82rem;color:rgba(17,16,8,0.5);margin-top:0.5rem;font-weight:300}
+
+/* TESTIMONIALS */
+.testi{background:var(--ink);padding:8rem 5rem}
+.testi .section-title{color:white;margin-bottom:4rem}
+.testi .label{color:var(--gold)}
+.testi .label::before{background:var(--gold)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06)}
+.testi-card{background:var(--ink);padding:2.5rem;transition:background 0.3s}
+.testi-card:hover{background:#1a1a12}
+.testi-rating{font-family:var(--ff-mono);font-size:0.65rem;color:var(--gold);letter-spacing:0.15em;margin-bottom:1.5rem}
+.testi-text{font-size:0.92rem;color:rgba(255,255,255,0.5);line-height:1.9;font-weight:300;font-style:italic;margin-bottom:2rem}
+.testi-name{font-size:0.85rem;font-weight:600;color:white}
+.testi-meta{font-family:var(--ff-mono);font-size:0.65rem;color:rgba(255,255,255,0.2);margin-top:0.25rem}
+
+/* CTA */
+.cta{background:var(--cream2);padding:8rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.cta-title{font-family:var(--ff-display);font-size:clamp(3rem,5vw,6rem);font-weight:900;color:var(--ink);line-height:0.95;letter-spacing:-0.01em}
+.cta-title em{color:var(--gold);font-style:italic}
+.cta-sub{font-size:1rem;color:var(--muted);line-height:1.8;font-weight:300;margin-top:1.5rem}
+.cta-right{display:flex;flex-direction:column;gap:1rem}
+.btn-forest{display:inline-flex;align-items:center;gap:0.75rem;background:var(--forest);color:var(--cream);font-family:var(--ff-mono);font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:1.25rem 2.5rem;text-decoration:none;transition:all 0.2s;border:none}
+.btn-forest:hover{background:var(--forest2);transform:translateX(4px)}
+.btn-border{display:inline-flex;align-items:center;gap:0.75rem;background:none;color:var(--ink);font-family:var(--ff-mono);font-size:0.78rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;padding:1.25rem 2.5rem;text-decoration:none;transition:all 0.2s;border:1px solid var(--border)}
+.btn-border:hover{border-color:var(--ink);transform:translateX(4px)}
+
+/* FOOTER */
+footer{background:var(--forest);padding:5rem;color:rgba(255,255,255,0.35)}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;padding-bottom:4rem;border-bottom:1px solid rgba(255,255,255,0.07)}
+.footer-brand{font-family:var(--ff-display);font-size:2rem;font-weight:900;color:white;display:block;margin-bottom:0.25rem}
+.footer-brand-sub{font-family:var(--ff-mono);font-size:0.6rem;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1.25rem;display:block}
+.footer-about{font-size:0.85rem;line-height:1.9;font-weight:300;max-width:280px}
+.footer-h{font-family:var(--ff-mono);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:white;margin-bottom:1.5rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.footer-links a{font-size:0.85rem;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s;font-weight:300}
+.footer-links a:hover{color:var(--gold)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;font-family:var(--ff-mono);font-size:0.68rem}
+
+/* ANIM */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+
+@media(max-width:900px){
+  nav{padding:1.25rem 1.5rem}
+  nav.scrolled{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero{padding:0 1.5rem 5rem}
+  .hero-tag{left:1.5rem;top:7rem}
+  .hero-badge{display:none}
+  section,.services,.about,.testi,.cta{padding:5rem 1.5rem}
+  .svc-header{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr}
+  .about-inner{grid-template-columns:1fr;gap:3rem}
+  .testi-grid{grid-template-columns:1fr}
+  .cta{grid-template-columns:1fr;gap:3rem}
+  .stats-bar{grid-template-columns:1fr 1fr}
+  .footer-top{grid-template-columns:1fr 1fr;gap:2.5rem}
+  footer{padding:3rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">
+    <span class="nav-logo-main">A&E Plumbing</span>
+    <span class="nav-logo-sub">Manhattan, NYC</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="tel:6463927164" class="nav-cta">Call: 646-392-7164</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-text">PLUMBING</div>
+  <div class="hero-tag">Est. Manhattan, NY — Licensed & Insured</div>
+  <div class="hero-badge">
+    <div class="hero-badge-num">5<span>★</span></div>
+    <div class="hero-badge-label">Google Rated</div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Manhattan's most trusted plumbers</div>
+    <h1 class="hero-title">
+      Expert
+      <em>Plumbing,</em>
+      Done Right.
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-desc">Residential & commercial plumbing across all NYC boroughs. Fast, honest, and priced fairly — every single time.</p>
+      <div class="hero-actions">
+        <a href="tel:6463927164" class="btn-gold">
+          ☎ Call 646-392-7164
+        </a>
+        <a href="#services" class="btn-outline-white">View Our Services →</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-line"></div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item reveal">
+    <div class="stat-n">5<span>★</span></div>
+    <div class="stat-l">Google Rating</div>
+  </div>
+  <div class="stat-item reveal reveal-delay-1">
+    <div class="stat-n">24<span>/7</span></div>
+    <div class="stat-l">Always Available</div>
+  </div>
+  <div class="stat-item reveal reveal-delay-2">
+    <div class="stat-n">16<span>+</span></div>
+    <div class="stat-l">Services Offered</div>
+  </div>
+  <div class="stat-item reveal reveal-delay-3">
+    <div class="stat-n">NYC<span>.</span></div>
+    <div class="stat-l">All Five Boroughs</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="svc-header reveal">
+    <div>
+      <div class="label">What we fix</div>
+      <h2 class="section-title">Everything<br>Plumbing.</h2>
+    </div>
+    <div>
+      <p class="svc-intro">From a dripping faucet to a full repipe — we handle it all with the same level of care, speed, and transparency.</p>
+      <br>
+      <a href="tel:6463927164" class="btn-gold" style="display:inline-flex">Get a Free Quote →</a>
+    </div>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card reveal">
+      <div class="svc-n">01</div>
+      <h3 class="svc-title">Drain Repair & Cleaning</h3>
+      <p class="svc-desc">Clogged drains, sewer line issues, hydro-jetting — we clear it fast and keep it clear.</p>
+      <div class="svc-dot"></div>
+    </div>
+    <div class="svc-card reveal reveal-delay-1">
+      <div class="svc-n">02</div>
+      <h3 class="svc-title">Leak Detection</h3>
+      <p class="svc-desc">Hidden leaks cause the most damage. We find them fast with advanced detection before they cost you thousands.</p>
+      <div class="svc-dot"></div>
+    </div>
+    <div class="svc-card reveal reveal-delay-2">
+      <div class="svc-n">03</div>
+      <h3 class="svc-title">Hot Water Heaters</h3>
+      <p class="svc-desc">Installation, repair, and replacement of all water heater types — traditional, tankless, and hybrid.</p>
+      <div class="svc-dot"></div>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-n">04</div>
+      <h3 class="svc-title">Gas Line Services</h3>
+      <p class="svc-desc">Gas line repair and installation handled exclusively by certified specialists. Safety is never negotiable.</p>
+      <div class="svc-dot"></div>
+    </div>
+    <div class="svc-card reveal reveal-delay-1">
+      <div class="svc-n">05</div>
+      <h3 class="svc-title">Kitchens & Bathrooms</h3>
+      <p class="svc-desc">Full plumbing for renovations and repairs — faucets, sinks, showers, tubs, toilets, and more.</p>
+      <div class="svc-dot"></div>
+    </div>
+    <div class="svc-card reveal reveal-delay-2">
+      <div class="svc-n">06</div>
+      <h3 class="svc-title">Piping & Repiping</h3>
+      <p class="svc-desc">Old pipes causing problems? We replace and upgrade entire systems cleanly, with minimal disruption.</p>
+      <div class="svc-dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-left reveal">
+      <div class="about-card">
+        <div class="about-card-title">Licensed</div>
+        <div class="about-card-sub">New York State — Fully Certified Plumber</div>
+        <div class="about-card-badge">✓ Verified & Active</div>
+      </div>
+      <div class="about-card" style="margin-top:2px">
+        <div class="about-card-title">Insured</div>
+        <div class="about-card-sub">Full liability coverage on every job</div>
+        <div class="about-card-badge">✓ Zero Risk to You</div>
+      </div>
+      <div class="about-phone">
+        <div class="about-phone-label">Call Us Anytime</div>
+        <a href="tel:6463927164" class="about-phone-num">646-392-7164</a>
+        <div class="about-phone-sub">Mon – Sun, 9am – 9pm</div>
+      </div>
+    </div>
+    <div class="about-right reveal reveal-delay-1">
+      <div class="label">Why A&E</div>
+      <h2 class="section-title">Honest Work.<br>Fair Prices.</h2>
+      <blockquote class="about-quote">"We're on a mission to make our customers happy — not just fix their pipes."</blockquote>
+      <p class="about-text">A&E NYC Plumbing has built its reputation one job at a time across Manhattan, Brooklyn, Queens, the Bronx, and Staten Island. Every technician is licensed, insured, and trained to treat your home with respect.</p>
+      <div class="about-perks">
+        <div class="perk">Free upfront quotes — no surprise fees</div>
+        <div class="perk">Fast turnaround, works around your schedule</div>
+        <div class="perk">Friendly, knowledgeable staff every time</div>
+        <div class="perk">All NYC boroughs covered</div>
+        <div class="perk">5-star rated on Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi" id="testimonials">
+  <div class="label">Client reviews</div>
+  <h2 class="section-title reveal" style="color:white">What NYC<br>Says About Us</h2>
+  <div class="testi-grid" style="margin-top:4rem">
+    <div class="testi-card reveal">
+      <div class="testi-rating">★★★★★ — 5/5</div>
+      <p class="testi-text">"Incredibly fast response. They fixed a major leak in our building's basement the same day we called. Professional, clean, and fairly priced."</p>
+      <div class="testi-name">Michael T.</div>
+      <div class="testi-meta">Manhattan, NYC</div>
+    </div>
+    <div class="testi-card reveal reveal-delay-1">
+      <div class="testi-rating">★★★★★ — 5/5</div>
+      <p class="testi-text">"Had a gas smell in the kitchen. They came within the hour, found the issue, and fixed it safely. I feel so much better knowing it's been handled properly."</p>
+      <div class="testi-name">Sandra K.</div>
+      <div class="testi-meta">Brooklyn, NYC</div>
+    </div>
+    <div class="testi-card reveal reveal-delay-2">
+      <div class="testi-rating">★★★★★ — 5/5</div>
+      <p class="testi-text">"Best plumber I've used in NYC. Honest pricing, no upselling, and they actually explained what they were doing. Rare to find that kind of service."</p>
+      <div class="testi-name">James R.</div>
+      <div class="testi-meta">Queens, NYC</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div>
+    <div class="label">Get in touch</div>
+    <h2 class="cta-title reveal">Ready to<br><em>Fix It?</em></h2>
+    <p class="cta-sub">Available Monday through Sunday, 9am to 9pm. Call now for a free quote — no obligation, no pressure.</p>
+  </div>
+  <div class="cta-right reveal reveal-delay-1">
+    <a href="tel:6463927164" class="btn-forest">☎ Call 646-392-7164</a>
+    <a href="mailto:support@topplumbernyc.com" class="btn-border">✉ Email Us Instead</a>
+    <p style="font-size:0.78rem;color:var(--muted);font-family:var(--ff-mono);margin-top:0.5rem">40 Fulton St, New York NY 10038</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <span class="footer-brand">A&E Plumbing</span>
+      <span class="footer-brand-sub">Manhattan, NYC</span>
+      <p class="footer-about">Licensed and insured plumbers serving all five NYC boroughs. Residential and commercial plumbing done right — every time.</p>
+    </div>
+    <div>
+      <div class="footer-h">Services</div>
+      <ul class="footer-links">
+        <li><a href="#">Drain Repair</a></li>
+        <li><a href="#">Leak Detection</a></li>
+        <li><a href="#">Water Heaters</a></li>
+        <li><a href="#">Gas Lines</a></li>
+        <li><a href="#">Kitchens & Baths</a></li>
+        <li><a href="#">Piping & Repiping</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-h">Boroughs</div>
+      <ul class="footer-links">
+        <li><a href="#">Manhattan</a></li>
+        <li><a href="#">Brooklyn</a></li>
+        <li><a href="#">Queens</a></li>
+        <li><a href="#">The Bronx</a></li>
+        <li><a href="#">Staten Island</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-h">Contact</div>
+      <ul class="footer-links">
+        <li><a href="tel:6463927164">646-392-7164</a></li>
+        <li><a href="mailto:support@topplumbernyc.com">support@topplumbernyc.com</a></li>
+        <li><a href="#">Free Quote</a></li>
+        <li><a href="#">40 Fulton St, NY 10038</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 A&E NYC Plumbing — All rights reserved</span>
+    <span>Manhattan · Brooklyn · Queens · Bronx · Staten Island</span>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
+const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
